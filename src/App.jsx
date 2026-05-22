@@ -344,6 +344,23 @@ export default function App() {
           <div className="absolute bottom-10 right-16 font-mono text-slate-400 font-bold text-sm">
             {currentSlide + 1} / {slides.length}
           </div>
+          {/* Сенсорные зоны для кликов по экрану (активны только в Fullscreen) */}
+          {isFullscreen && (
+            <div className="absolute inset-0 flex z-50 pointer-events-none">
+              <div 
+                onClick={prevSlide} 
+                className="w-1/2 h-full pointer-events-auto active:bg-black/5 transition-colors"
+                style={{ cursor: "w-resize" }}
+                title="Назад"
+              />
+              <div 
+                onClick={nextSlide} 
+                className="w-1/2 h-full pointer-events-auto active:bg-black/5 transition-colors"
+                style={{ cursor: "e-resize" }}
+                title="Вперед"
+              />
+            </div>
+          )}
         </div>
       </div>
 
