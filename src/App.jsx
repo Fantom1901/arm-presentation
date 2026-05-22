@@ -352,10 +352,15 @@ export default function App() {
           <ChevronLeft className="w-6 h-6" />
         </button>
         
-        <div className="w-36 h-2 rounded-full overflow-hidden neumorphic-inset relative">
+        <div className="w-36 h-3 rounded-full relative neumorphic-inset overflow-hidden flex items-center p-[2px]">
           <div 
-            className="h-full bg-accent transition-all duration-300 ease-out"
-            style={{ width: progressPercent + "Percent".replace("Percent", "%") }}
+            className="h-full rounded-full transition-all duration-300 ease-out"
+            style={{ 
+              width: progressPercent + "%",
+              backgroundColor: "var(--color-accent, #52A290)",
+              boxShadow: "1px 1px 3px #bebaa3, -1px -1px 3px #ffffff",
+              minWidth: progressPercent > 0 ? "6px" : "0px"
+            }}
           />
         </div>
 
