@@ -278,7 +278,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-slate-800 p-4 font-sans select-none">
-      <div className={`relative w-full max-w-[1100px] h-[620px] rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 flex flex-col items-center justify-center p-12 ${
+      <div className={`relative w-full transition-all duration-300 flex flex-col items-center justify-center ${isFullscreen ? "w-screen h-screen rounded-none p-16" : "max-w-[1100px] h-[620px] rounded-2xl shadow-2xl p-12"} overflow-hidden ${
         slide.type === "dark" ? "bg-slate-900 text-slate-100" : "bg-cream text-slate-900"
       }`}>
         
