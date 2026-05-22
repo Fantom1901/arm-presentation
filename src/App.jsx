@@ -1,244 +1,156 @@
 
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Monitor, Shield, CheckCheck, Cpu, 
   Terminal, ShieldAlert, Network, Wifi, 
-  BarChart3, Calendar, ChevronLeft, ChevronRight, Maximize2, Minimize2 
+  BarChart3, Calendar, ChevronLeft, ChevronRight,
+  Maximize2, Minimize2
 } from "lucide-react";
 
 const slides = [
   {
     id: 1,
-    type: "dark",
     content: (
-      <div className="text-center">
-        <h1 className="text-5xl font-serif font-bold mb-4">Внедрение АРМ</h1>
-        <p className="text-xl text-accent font-medium">КГАПОУ "ККОТиП" - 2026</p>
-        <div className="mt-16 text-lg opacity-70">
-          Экзаменационный проект по дисциплине "Информационные технологии"<br />
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9 }} 
+        animate={{ opacity: 1, scale: 1 }}
+        className="text-center"
+      >
+        <h1 className="text-6xl font-serif font-bold mb-4 text-navy">Внедрение АРМ</h1>
+        <p className="text-2xl text-accent font-medium">КГАПОУ "ККОТиП" - 2026</p>
+        <div className="mt-16 text-lg opacity-60">
+          Экзаменационный проект по ИТ<br />
           Студент: ИСиП 24-01 | Преподаватель: О.А. Тропашко
         </div>
-      </div>
+      </motion.div>
     )
   },
   {
     id: 2,
-    type: "light",
-    title: "Актуальность ИКТ в 2026 году",
+    title: "Актуальность ИКТ",
     content: (
-      <div className="grid grid-cols-2 gap-8 w-full px-8">
-        <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm text-center">
-          <Cpu className="w-12 h-12 text-accent mx-auto mb-4" />
-          <h3 className="text-xl font-bold mb-2 text-navy">Цифровизация</h3>
-          <p className="text-slate-600">Переход к модели "Цифрового колледжа" требует полной автоматизации рутинных процессов учебной части и приемной комиссии.</p>
-        </div>
-        <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm text-center">
-          <Terminal className="w-12 h-12 text-accent mx-auto mb-4" />
-          <h3 className="text-xl font-bold mb-2 text-navy">Эффективность</h3>
-          <p className="text-slate-600">АРМ позволяют сократить время обработки документов на 40% и исключить ошибки, связанные с человеческим фактором.</p>
-        </div>
+      <div className="grid grid-cols-2 gap-12 w-full px-8">
+        {[
+          { icon: Cpu, t: "Цифровизация", d: "Переход к модели Цифрового колледжа." },
+          { icon: Terminal, t: "Эффективность", d: "Сокращение времени обработки документов на 40%." }
+        ].map((item, i) => (
+          <motion.div 
+            key={i}
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: i * 0.2 }}
+            className="p-10 rounded-[30px] shadow-[10px_10px_20px_#CDCAD3,-10px_-10px_20px_#FFFFFF] text-center"
+          >
+            <item.icon className="w-14 h-14 text-accent mx-auto mb-4" />
+            <h3 className="text-2xl font-bold mb-2 text-navy">{item.t}</h3>
+            <p className="text-slate-500 leading-relaxed">{item.d}</p>
+          </motion.div>
+        ))}
       </div>
     )
   },
   {
     id: 3,
-    type: "light",
-    title: "Цели и задачи проекта",
+    title: "Задачи проекта",
     content: (
-      <div className="w-full max-w-3xl text-left space-y-4 font-sans">
-        <div className="flex items-start gap-4">
-          <CheckCheck className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
-          <p className="text-lg"><strong>Основная цель:</strong> Проектирование и economic обоснование внедрения 10 АРМ для сотрудников ККОТиП.</p>
-        </div>
-        <div className="flex items-start gap-4">
-          <Monitor className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
-          <p className="text-lg">Изучение теоретических основы и состава современного рабочего места специалиста.</p>
-        </div>
-        <div className="flex items-start gap-4">
-          <Shield className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
-          <p className="text-lg">Анализ угроз информационной безопасности и разработка мер защиты данных.</p>
-        </div>
-        <div className="flex items-start gap-4">
-          <BarChart3 className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
-          <p className="text-lg">Расчет бюджета и оценка экономической эффективности внедрения ИКТ-средств.</p>
-        </div>
-        <div className="flex items-start gap-4">
-          <Calendar className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
-          <p className="text-lg">Формирование календарного плана-графика реализации этапов проекта.</p>
-        </div>
+      <div className="w-full max-w-2xl space-y-6">
+        {[
+          "Изучение теоретических основ АРМ",
+          "Анализ угроз безопасности",
+          "Расчет бюджета в MS Excel",
+          "Создание календарного плана",
+          "Разработка парольной политики"
+        ].map((task, i) => (
+          <motion.div 
+            key={i}
+            initial={{ x: -30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: i * 0.1 }}
+            className="flex items-center gap-5 p-4 rounded-2xl shadow-[4px_4px_10px_#CDCAD3,-4px_-4px_10px_#FFFFFF]"
+          >
+            <div className="w-10 h-10 rounded-full shadow-[inset_2px_2px_5px_#CDCAD3,inset_-2px_-2px_5px_#FFFFFF] flex items-center justify-center">
+               <CheckCheck className="w-5 h-5 text-accent" />
+            </div>
+            <p className="text-lg font-medium">{task}</p>
+          </motion.div>
+        ))}
       </div>
     )
   },
   {
     id: 4,
-    type: "dark",
+    title: "Структура АРМ",
     content: (
-      <div className="text-center">
-        <h2 className="text-5xl font-serif font-bold mb-6">Теоретические основы</h2>
-        <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
-        <p className="text-xl opacity-80">Глава 1: Понятие и структура АРМ</p>
+      <div className="grid grid-cols-2 gap-12 w-full px-8 items-center">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
+          <h3 className="text-3xl font-bold text-navy">Hardware & Software</h3>
+          <p className="text-slate-500 text-lg">Единый программно-технический комплекс специалиста.</p>
+          <div className="p-6 rounded-3xl shadow-[inset_5px_5px_10px_#CDCAD3,inset_-5px_-5px_10px_#FFFFFF] text-accent font-mono text-sm">
+             <p>// Спецификация 2026</p>
+             <p>const Config = ["Core_i3", "SSD_512GB", "Win_11"];</p>
+          </div>
+        </motion.div>
+        <motion.div 
+          animate={{ y: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 4 }}
+          className="p-10 rounded-[40px] shadow-[15px_15px_30px_#CDCAD3,-15px_-15px_30px_#FFFFFF] flex items-center justify-center"
+        >
+          <Monitor className="w-40 h-40 text-navy opacity-20" />
+        </motion.div>
       </div>
     )
   },
   {
     id: 5,
-    type: "light",
-    title: "Структура и состав АРМ",
+    title: "Бюджет на 10 АРМ",
     content: (
-      <div className="grid grid-cols-2 gap-8 w-full px-8 items-center">
-        <div className="text-left space-y-4">
-          <h3 className="text-2xl font-serif font-bold text-navy">Комплексный подход</h3>
-          <p className="text-slate-600 text-lg">АРМ - это не просто computer, а единый программно-технический комплекс специалиста:</p>
-          <ul className="list-disc pl-5 space-y-2 text-slate-700">
-            <li><strong>Hardware:</strong> Моноблоки Pro, SSD, периферия (МФУ).</li>
-            <li><strong>Software:</strong> Системная ОС, Офисные пакеты, ИС "1С:Колледж".</li>
-            <li><strong>Network:</strong> Стабильный доступ к локальной сети колледжа.</li>
-          </ul>
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }} 
+        animate={{ opacity: 1, y: 0 }}
+        className="w-full px-8"
+      >
+        <div className="rounded-[30px] shadow-[10px_10px_20px_#CDCAD3,-10px_-10px_20px_#FFFFFF] overflow-hidden bg-cream">
+          <table className="w-full text-left">
+            <thead>
+              <tr className="border-b border-slate-200">
+                <th className="p-5 text-accent uppercase tracking-widest text-xs">Предмет</th>
+                <th className="p-5 text-accent uppercase tracking-widest text-xs text-right">Сумма (руб)</th>
+              </tr>
+            </thead>
+            <tbody className="text-navy font-medium">
+              <tr className="border-b border-slate-200">
+                <td className="p-5">Оборудование (Моноблоки)</td>
+                <td className="p-5 text-right">450 000</td>
+              </tr>
+              <tr className="border-b border-slate-200">
+                <td className="p-5">Лицензионное ПО</td>
+                <td className="p-5 text-right">120 000</td>
+              </tr>
+              <tr className="bg-slate-100/50">
+                <td className="p-5 font-bold">ИТОГО С НДС 20%</td>
+                <td className="p-5 text-right font-bold text-accent text-xl">918 000</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div className="bg-navy p-6 rounded-xl text-accent font-mono text-sm border border-slate-700 shadow-inner">
-          <p className="text-slate-400">// Архитектурная связка</p>
-          <p>const ARM_Unit = &#123;</p>
-          <p className="pl-4">hardware: "MonoBlock_24",</p>
-          <p className="pl-4">os: "Windows_10_Pro",</p>
-          <p className="pl-4">security: "AntiVirus_Enterprise",</p>
-          <p className="pl-4">network: "Ethernet_1Gbps"</p>
-          <p>&#125;;</p>
-        </div>
-      </div>
+      </motion.div>
     )
   },
   {
     id: 6,
-    type: "light",
-    title: "Угрозы безопасности",
-    content: (
-      <div className="grid grid-cols-3 gap-6 w-full px-6">
-        <div className="bg-white p-6 rounded-xl border border-slate-200 text-center">
-          <ShieldAlert className="w-10 h-10 text-accent mx-auto mb-4" />
-          <h4 className="font-bold text-navy mb-2">Вредоносное ПО</h4>
-          <p className="text-sm text-slate-600">Проникновение вирусов-шифровальщиков через почту или внешние носители.</p>
-        </div>
-        <div className="bg-white p-6 rounded-xl border border-slate-200 text-center">
-          <ShieldAlert className="w-10 h-10 text-accent mx-auto mb-4" />
-          <h4 className="font-bold text-navy mb-2">Сетевые атаки</h4>
-          <p className="text-sm text-slate-600">Перехват трафика учетных записей внутри незащищенных сегментов сети.</p>
-        </div>
-        <div className="bg-white p-6 rounded-xl border border-slate-200 text-center">
-          <ShieldAlert className="w-10 h-10 text-accent mx-auto mb-4" />
-          <h4 className="font-bold text-navy mb-2">Человеческий фактор</h4>
-          <p className="text-sm text-slate-600">Непреднамеренное удаление файлов или компрометация паролей.</p>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 7,
-    type: "dark",
+    title: "Вопросы?",
     content: (
       <div className="text-center">
-        <h2 className="text-5xl font-serif font-bold mb-6">Проектирование в ККОТиП</h2>
-        <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
-        <p className="text-xl opacity-80">Глава 2: Практическая реализация</p>
-      </div>
-    )
-  },
-  {
-    id: 8,
-    type: "light",
-    title: "Спецификация и Бюджет проекта",
-    content: (
-      <div className="w-full px-8 overflow-hidden rounded-xl border border-slate-200 shadow-sm bg-white">
-        <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="bg-navy text-white">
-              <th className="p-4">Наименование</th>
-              <th className="p-4 text-center">Кол-во</th>
-              <th className="p-4 text-right">Цена (руб)</th>
-              <th className="p-4 text-right">Стоимость (руб)</th>
-            </tr>
-          </thead>
-          <tbody className="text-slate-700">
-            <tr className="border-b border-slate-100"><td className="p-4">Моноблок Pro 24"</td><td className="p-4 text-center">10</td><td className="p-4 text-right">45 000</td><td className="p-4 text-right">450 000</td></tr>
-            <tr className="border-b border-slate-100"><td className="p-4">Лицензия Windows + Office</td><td className="p-4 text-center">10</td><td className="p-4 text-right">12 000</td><td className="p-4 text-right">120 000</td></tr>
-            <tr className="border-b border-slate-100"><td className="p-4">Антивирусная защита</td><td className="p-4 text-center">10</td><td className="p-4 text-right">3 000</td><td className="p-4 text-right">30 000</td></tr>
-            <tr className="bg-slate-50 font-bold text-navy">
-              <td className="p-4" colSpan="3">ВСЕГО с НДС 20%</td>
-              <td className="p-4 text-right">918 000</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    )
-  },
-  {
-    id: 9,
-    type: "light",
-    title: "Сетевая инфраструктура",
-    content: (
-      <div className="grid grid-cols-2 gap-8 w-full px-8">
-        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
-          <Network className="w-12 h-12 text-navy mx-auto mb-4" />
-          <h3 className="text-xl font-bold mb-2 text-navy">Проводной Ethernet</h3>
-          <p className="text-slate-600 text-sm">Максимальная стабильность, высокая скорость передачи данных и гарантированная защита от перехвата информации из радиоэфира.</p>
-        </div>
-        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
-          <Wifi className="w-12 h-12 text-accent mx-auto mb-4" />
-          <h3 className="text-xl font-bold mb-2 text-navy">Беспроводной Wi-Fi</h3>
-          <p className="text-slate-600 text-sm">Мобильность рабочих мест, однако присутствуют риски затухания сигнала в старых перекрытиях здания и перегрузки точек доступа.</p>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 10,
-    type: "light",
-    title: "Календарный план внедрения",
-    content: (
-      <div className="w-full px-4 relative flex justify-between items-center mt-12">
-        <div className="absolute left-0 right-0 h-1 bg-navy z-0 top-1/2 transform -translate-y-1/2"></div>
-        <div className="bg-white p-4 rounded-lg border-2 border-accent z-10 text-center w-1/5 shadow-sm">
-          <h4 className="font-bold text-accent">Закупка</h4>
-          <p className="text-xs text-slate-500">Этап 1 (Дни 0-3)</p>
-        </div>
-        <div className="bg-white p-4 rounded-lg border-2 border-accent z-10 text-center w-1/5 shadow-sm">
-          <h4 className="font-bold text-accent">Сеть</h4>
-          <p className="text-xs text-slate-500">Этап 2 (Дни 3-5)</p>
-        </div>
-        <div className="bg-white p-4 rounded-lg border-2 border-accent z-10 text-center w-1/5 shadow-sm">
-          <h4 className="font-bold text-accent">Инсталляция</h4>
-          <p className="text-xs text-slate-500">Этап 3 (Дни 5-7)</p>
-        </div>
-        <div className="bg-white p-4 rounded-lg border-2 border-accent z-10 text-center w-1/5 shadow-sm">
-          <h4 className="font-bold text-accent">Приемка</h4>
-          <p className="text-xs text-slate-500">Этап 4 (Дни 7-12)</p>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 11,
-    type: "light",
-    title: "Корпоративная парольная политика",
-    content: (
-      <div className="w-full max-w-2xl text-left bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3 text-slate-700">
-        <p>1. Минимальная длина пароля учетной записи - <strong>не менее 8 символов</strong>.</p>
-        <p>2. Обязательно наличие заглавных букв, цифр и спецсимволов (@, #, $, %).</p>
-        <p>3. Смена пароля производится в принудительном порядке <strong>каждые 90 дней</strong>.</p>
-        <p>4. Автоматическая блокировка сессии при неактивности пользователя более 5 минут.</p>
-        <p>5. Блокировка учетной записи на 30 минут после 5 неверных попыток ввода подряд.</p>
-      </div>
-    )
-  },
-  {
-    id: 12,
-    type: "dark",
-    content: (
-      <div className="text-center">
-        <h2 className="text-6xl font-serif font-bold text-accent mb-4">Вопросы?</h2>
-        <p className="text-2xl opacity-90">Благодарю за внимание!</p>
-        <div className="mt-12 pt-6 border-t border-slate-700 text-slate-400 text-sm">
-          КГАПОУ "ККОТиП" <br /> Экзаменационный проект по ИКТ, 2026
-        </div>
+        <motion.div 
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ repeat: Infinity, duration: 3 }}
+          className="w-32 h-32 rounded-full shadow-[10px_10px_20px_#CDCAD3,-10px_-10px_20px_#FFFFFF] flex items-center justify-center mx-auto mb-8"
+        >
+          <HelpCircle className="w-16 h-16 text-accent" />
+        </motion.div>
+        <h2 className="text-5xl font-bold text-navy mb-4">Спасибо за внимание!</h2>
+        <p className="text-slate-400 font-mono">КГАПОУ "ККОТиП" | 2026</p>
       </div>
     )
   }
@@ -248,20 +160,15 @@ export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
+  const nextSlide = () => { if (currentSlide < slides.length - 1) setCurrentSlide(currentSlide + 1); };
+  const prevSlide = () => { if (currentSlide > 0) setCurrentSlide(currentSlide - 1); };
+
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().then(() => setIsFullscreen(true)).catch(() => {});
+      document.documentElement.requestFullscreen().then(() => setIsFullscreen(true));
     } else {
-      document.exitFullscreen().then(() => setIsFullscreen(false)).catch(() => {});
+      document.exitFullscreen().then(() => setIsFullscreen(false));
     }
-  };
-
-  const nextSlide = () => {
-    if (currentSlide < slides.length - 1) setCurrentSlide(currentSlide + 1);
-  };
-
-  const prevSlide = () => {
-    if (currentSlide > 0) setCurrentSlide(currentSlide - 1);
   };
 
   useEffect(() => {
@@ -274,55 +181,57 @@ export default function App() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentSlide]);
 
-  const slide = slides[currentSlide];
-
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-800 p-4 font-sans select-none">
-      <div className={`relative w-full transition-all duration-300 flex flex-col items-center justify-center ${isFullscreen ? "w-screen h-screen rounded-none p-16" : "max-w-[1100px] h-[620px] rounded-2xl shadow-2xl p-12"} overflow-hidden ${
-        slide.type === "dark" ? "bg-slate-900 text-slate-100" : "bg-cream text-slate-900"
-      }`}>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-cream p-4 font-sans select-none overflow-hidden">
+      
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide}
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -100, opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className={`relative bg-cream flex flex-col items-center justify-center transition-all duration-500 \${
+            isFullscreen 
+            ? "w-screen h-screen rounded-none p-20" 
+            : "w-full max-w-[1100px] h-[650px] rounded-[50px] shadow-[30px_30px_60px_#CDCAD3,-30px_-30px_60px_#FFFFFF] p-16"
+          }`}
+        >
+          {slides[currentSlide].title && (
+            <div className="absolute top-12 left-16">
+              <h2 className="text-4xl font-serif font-bold text-navy mb-1">{slides[currentSlide].title}</h2>
+              <div className="w-16 h-1 bg-accent rounded-full"></div>
+            </div>
+          )}
+
+          <div className="w-full flex flex-col items-center justify-center flex-grow">
+            {slides[currentSlide].content}
+          </div>
+
+          <div className="absolute bottom-10 right-16 font-mono text-slate-400 font-bold">
+            {currentSlide + 1} / {slides.length}
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="flex items-center gap-8 mt-12 bg-cream px-10 py-4 rounded-full shadow-[8px_8px_16px_#CDCAD3,-8px_-8px_16px_#FFFFFF]">
+        <button onClick={prevSlide} disabled={currentSlide === 0} className="text-navy hover:text-accent disabled:opacity-20 transition-all active:scale-90">
+          <ChevronLeft className="w-8 h-8" />
+        </button>
         
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-slate-700/30">
-          <div 
-            className="h-full bg-accent transition-all duration-300" 
-            style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
+        <div className="w-40 h-2 bg-slate-200 rounded-full overflow-hidden shadow-[inset_2px_2px_5px_#CDCAD3,inset_-2px_-2px_5px_#FFFFFF]">
+          <motion.div 
+            className="h-full bg-accent"
+            animate={{ width: `\${((currentSlide + 1) / slides.length) * 100}%\` }}
           />
         </div>
 
-        {slide.title && (
-          <h2 className={`absolute top-10 left-12 text-3xl font-serif font-bold pb-2 border-b-2 border-accent ${
-            slide.type === "dark" ? "text-white" : "text-navy"
-          }`}>
-            {slide.title}
-          </h2>
-        )}
-
-        <div className="w-full flex flex-col items-center justify-center flex-grow mt-6">
-          {slide.content}
-        </div>
-
-        <div className="absolute bottom-6 right-12 text-sm font-mono opacity-50">
-          {currentSlide + 1} / {slides.length}
-        </div>
-      </div>
-
-      <div className="flex items-center gap-6 mt-6 bg-slate-900/80 backdrop-blur px-6 py-3 rounded-full border border-slate-700">
-        <button 
-          onClick={prevSlide} 
-          disabled={currentSlide === 0}
-          className="text-white hover:text-accent disabled:opacity-30 transition-colors"
-        >
-          <ChevronLeft className="w-6 h-6" />
+        <button onClick={nextSlide} disabled={currentSlide === slides.length - 1} className="text-navy hover:text-accent disabled:opacity-20 transition-all active:scale-90">
+          <ChevronRight className="w-8 h-8" />
         </button>
-        <span className="text-slate-400 font-mono text-sm">
-          Слайд {currentSlide + 1}
-        </span>
-        <button 
-          onClick={nextSlide} 
-          disabled={currentSlide === slides.length - 1}
-          className="text-white hover:text-accent disabled:opacity-30 transition-colors"
-        >
-          <ChevronRight className="w-6 h-6" />
+
+        <button onClick={toggleFullscreen} className="text-slate-400 hover:text-accent border-l border-slate-300 pl-6 ml-2 transition-all active:scale-90">
+          {isFullscreen ? <Minimize2 className="w-6 h-6" /> : <Maximize2 className="w-6 h-6" /> }
         </button>
       </div>
     </div>
