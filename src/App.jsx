@@ -222,7 +222,7 @@ export default function App() {
         <div className="w-40 h-2 bg-slate-200 rounded-full overflow-hidden shadow-[inset_2px_2px_5px_#CDCAD3,inset_-2px_-2px_5px_#FFFFFF]">
           <motion.div 
             className="h-full bg-accent"
-            animate={{ width: `\${((currentSlide + 1) / slides.length) * 100}%\` }}
+            animate={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
           />
         </div>
 
