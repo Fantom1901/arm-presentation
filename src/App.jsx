@@ -5,7 +5,7 @@ import {
   Monitor, Shield, CheckCheck, Cpu, 
   Terminal, ShieldAlert, Network, Wifi, 
   BarChart3, Calendar, ChevronLeft, ChevronRight,
-  Maximize2, Minimize2
+  Maximize2, Minimize2, HelpCircle
 } from "lucide-react";
 
 const slides = [
@@ -40,7 +40,7 @@ const slides = [
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: i * 0.2 }}
-            className="p-10 rounded-[30px] shadow-[10px_10px_20px_#CDCAD3,-10px_-10px_20px_#FFFFFF] text-center"
+            className="p-10 rounded-[30px] neumorphic-item text-center"
           >
             <item.icon className="w-14 h-14 text-accent mx-auto mb-4" />
             <h3 className="text-2xl font-bold mb-2 text-navy">{item.t}</h3>
@@ -67,9 +67,9 @@ const slides = [
             initial={{ x: -30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: i * 0.1 }}
-            className="flex items-center gap-5 p-4 rounded-2xl shadow-[4px_4px_10px_#CDCAD3,-4px_-4px_10px_#FFFFFF]"
+            className="flex items-center gap-5 p-4 rounded-2xl neumorphic-item"
           >
-            <div className="w-10 h-10 rounded-full shadow-[inset_2px_2px_5px_#CDCAD3,inset_-2px_-2px_5px_#FFFFFF] flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full neumorphic-inset flex items-center justify-center">
                <CheckCheck className="w-5 h-5 text-accent" />
             </div>
             <p className="text-lg font-medium">{task}</p>
@@ -86,7 +86,7 @@ const slides = [
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
           <h3 className="text-3xl font-bold text-navy">Hardware & Software</h3>
           <p className="text-slate-500 text-lg">Единый программно-технический комплекс специалиста.</p>
-          <div className="p-6 rounded-3xl shadow-[inset_5px_5px_10px_#CDCAD3,inset_-5px_-5px_10px_#FFFFFF] text-accent font-mono text-sm">
+          <div className="p-6 rounded-3xl neumorphic-inset text-accent font-mono text-sm">
              <p>// Спецификация 2026</p>
              <p>const Config = ["Core_i3", "SSD_512GB", "Win_11"];</p>
           </div>
@@ -94,7 +94,7 @@ const slides = [
         <motion.div 
           animate={{ y: [0, -10, 0] }}
           transition={{ repeat: Infinity, duration: 4 }}
-          className="p-10 rounded-[40px] shadow-[15px_15px_30px_#CDCAD3,-15px_-15px_30px_#FFFFFF] flex items-center justify-center"
+          className="p-10 rounded-[40px] neumorphic-item flex items-center justify-center"
         >
           <Monitor className="w-40 h-40 text-navy opacity-20" />
         </motion.div>
@@ -110,7 +110,7 @@ const slides = [
         animate={{ opacity: 1, y: 0 }}
         className="w-full px-8"
       >
-        <div className="rounded-[30px] shadow-[10px_10px_20px_#CDCAD3,-10px_-10px_20px_#FFFFFF] overflow-hidden bg-cream">
+        <div className="rounded-[30px] neumorphic-item overflow-hidden bg-cream">
           <table className="w-full text-left">
             <thead>
               <tr className="border-b border-slate-200">
@@ -145,7 +145,7 @@ const slides = [
         <motion.div 
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ repeat: Infinity, duration: 3 }}
-          className="w-32 h-32 rounded-full shadow-[10px_10px_20px_#CDCAD3,-10px_-10px_20px_#FFFFFF] flex items-center justify-center mx-auto mb-8"
+          className="w-32 h-32 rounded-full neumorphic-item flex items-center justify-center mx-auto mb-8"
         >
           <HelpCircle className="w-16 h-16 text-accent" />
         </motion.div>
@@ -194,7 +194,7 @@ export default function App() {
           className={`relative bg-cream flex flex-col items-center justify-center transition-all duration-500 \${
             isFullscreen 
             ? "w-screen h-screen rounded-none p-20" 
-            : "w-full max-w-[1100px] h-[650px] rounded-[50px] shadow-[30px_30px_60px_#CDCAD3,-30px_-30px_60px_#FFFFFF] p-16"
+            : "w-full max-w-[1100px] h-[650px] rounded-[50px] neumorphic-card p-16"
           }`}
         >
           {slides[currentSlide].title && (
@@ -214,12 +214,12 @@ export default function App() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="flex items-center gap-8 mt-12 bg-cream px-10 py-4 rounded-full shadow-[8px_8px_16px_#CDCAD3,-8px_-8px_16px_#FFFFFF]">
+      <div className="flex items-center gap-8 mt-12 bg-cream px-10 py-4 rounded-full neumorphic-btn">
         <button onClick={prevSlide} disabled={currentSlide === 0} className="text-navy hover:text-accent disabled:opacity-20 transition-all active:scale-90">
           <ChevronLeft className="w-8 h-8" />
         </button>
         
-        <div className="w-40 h-2 bg-slate-200 rounded-full overflow-hidden shadow-[inset_2px_2px_5px_#CDCAD3,inset_-2px_-2px_5px_#FFFFFF]">
+        <div className="w-40 h-2 bg-slate-200 rounded-full overflow-hidden neumorphic-inset">
           <motion.div 
             className="h-full bg-accent"
             animate={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
@@ -231,7 +231,7 @@ export default function App() {
         </button>
 
         <button onClick={toggleFullscreen} className="text-slate-400 hover:text-accent border-l border-slate-300 pl-6 ml-2 transition-all active:scale-90">
-          {isFullscreen ? <Minimize2 className="w-6 h-6" /> : <Maximize2 className="w-6 h-6" /> }
+          {isFullscreen ? <Minimize2, HelpCircle className="w-6 h-6" /> : <Maximize2 className="w-6 h-6" /> }
         </button>
       </div>
     </div>

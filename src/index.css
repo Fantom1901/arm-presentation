@@ -1,15 +1,45 @@
 @import "tailwindcss";
 
-@theme {
-  --color-cream: #EAE6DF;
+:root {
+  --color-bg: #EAE6DF;
   --color-navy: #1A2E40;
   --color-accent: #52A290;
-  --shadow-dark: #CDCAD3;
-  --shadow-light: #FFFFFF;
 }
 
 body {
-  background-color: var(--color-cream);
-  margin: 0;
+  background-color: var(--color-bg);
   color: var(--color-navy);
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* Главная большая подушка для слайдов */
+.neumorphic-card {
+  background: var(--color-bg);
+  box-shadow: 25px 25px 50px #bebaa3, -25px -25px 50px #ffffff;
+}
+
+/* Маленькие тактильные карточки внутри слайдов */
+.neumorphic-item {
+  background: var(--color-bg);
+  box-shadow: 10px 10px 20px #bebaa3, -10px -10px 20px #ffffff;
+}
+
+/* Вдавленный эффект (инпут, прогресс-бар) */
+.neumorphic-inset {
+  background: var(--color-bg);
+  box-shadow: inset 5px 5px 10px #bebaa3, inset -5px -5px 10px #ffffff;
+}
+
+/* Кнопки-подушечки */
+.neumorphic-btn {
+  background: var(--color-bg);
+  box-shadow: 6px 6px 12px #bebaa3, -6px -6px 12px #ffffff;
+  transition: all 0.2s ease;
+}
+.neumorphic-btn:hover {
+  box-shadow: 3px 3px 6px #bebaa3, -3px -3px 6px #ffffff;
+}
+.neumorphic-btn:active {
+  box-shadow: inset 4px 4px 8px #bebaa3, inset -4px -4px 8px #ffffff;
 }
