@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { 
   Monitor, Shield, CheckCheck, Cpu, 
   Terminal, ShieldAlert, Network, Wifi, 
-  BarChart3, Calendar, ChevronLeft, ChevronRight 
+  BarChart3, Calendar, ChevronLeft, ChevronRight, Maximize2, Minimize2 
 } from "lucide-react";
 
 const slides = [
@@ -246,6 +246,15 @@ const slides = [
 
 export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().then(() => setIsFullscreen(true)).catch(() => {});
+    } else {
+      document.exitFullscreen().then(() => setIsFullscreen(false)).catch(() => {});
+    }
+  };
 
   const nextSlide = () => {
     if (currentSlide < slides.length - 1) setCurrentSlide(currentSlide + 1);
@@ -259,6 +268,7 @@ export default function App() {
     const handleKeyDown = (e) => {
       if (e.key === "ArrowRight" || e.key === "Space") nextSlide();
       if (e.key === "ArrowLeft") prevSlide();
+      if (e.key.toLowerCase() === "f" || e.key.toLowerCase() === "а") toggleFullscreen();
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
