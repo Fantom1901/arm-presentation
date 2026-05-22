@@ -48,7 +48,7 @@ const slides = [
       <div className="w-full max-w-3xl text-left space-y-4 font-sans">
         <div className="flex items-start gap-4">
           <CheckDouble className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
-          <p className="text-lg"><strong>Основная цель:</strong> Проектирование и экономическое обоснование внедрения 10 АРМ для сотрудников ККОТиП.</p>
+          <p className="text-lg"><strong>Основная цель:</strong> Проектирование и economic обоснование внедрения 10 АРМ для сотрудников ККОТиП.</p>
         </div>
         <div className="flex items-start gap-4">
           <Monitor className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
@@ -268,19 +268,19 @@ export default function App() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-slate-800 p-4 font-sans select-none">
-      <div className={`relative w-full max-w-[1100px] h-[620px] rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 flex flex-col items-center justify-center p-12 \${
+      <div className={`relative w-full max-w-[1100px] h-[620px] rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 flex flex-col items-center justify-center p-12 ${
         slide.type === "dark" ? "bg-slate-900 text-slate-100" : "bg-cream text-slate-900"
       }`}>
         
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-slate-700/30">
           <div 
             className="h-full bg-accent transition-all duration-300" 
-            style={{ width: `\${((currentSlide + 1) / slides.length) * 100}%\` }}
+            style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
           />
         </div>
 
         {slide.title && (
-          <h2 className={`absolute top-10 left-12 text-3xl font-serif font-bold pb-2 border-b-2 border-accent \${
+          <h2 className={`absolute top-10 left-12 text-3xl font-serif font-bold pb-2 border-b-2 border-accent ${
             slide.type === "dark" ? "text-white" : "text-navy"
           }`}>
             {slide.title}
