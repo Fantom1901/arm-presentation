@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FDFCF0;
+  --color-navy: #002244;
+  --color-accent: #11caa0;
+}
+
+body {
+  background-color: #e2e8f0;
+  margin: 0;
+}
