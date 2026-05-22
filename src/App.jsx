@@ -5,7 +5,7 @@ import {
   Monitor, Shield, CheckCheck, Cpu, 
   Terminal, ShieldAlert, Network, Wifi, 
   BarChart3, Calendar, ChevronLeft, ChevronRight,
-  Maximize2, Minimize2, HelpCircle
+  Maximize2, Minimize2, HelpCircle, HelpCircle
 } from "lucide-react";
 
 const slides = [
@@ -231,7 +231,7 @@ export default function App() {
         </button>
 
         <button onClick={toggleFullscreen} className="text-slate-400 hover:text-accent border-l border-slate-300 pl-6 ml-2 transition-all active:scale-90">
-          {isFullscreen ? <Minimize2, HelpCircle className="w-6 h-6" /> : <Maximize2 className="w-6 h-6" /> }
+          {isFullscreen ? <Minimize2 className="w-6 h-6" /> : <Maximize2 className="w-6 h-6" /> }
         </button>
       </div>
     </div>
