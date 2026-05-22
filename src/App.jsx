@@ -5,7 +5,7 @@ import {
   Monitor, Shield, CheckCheck, Cpu, 
   Terminal, ShieldAlert, Network, Wifi, 
   BarChart3, Calendar, ChevronLeft, ChevronRight,
-  Maximize2, Minimize2, HelpCircle, HelpCircle
+  Maximize2, Minimize2, HelpCircle
 } from "lucide-react";
 
 const slides = [
