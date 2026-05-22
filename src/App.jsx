@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { 
-  Monitor, Shield, CheckDouble, Cpu, 
+  Monitor, Shield, CheckCheck, Cpu, 
   Terminal, ShieldAlert, Network, Wifi, 
   BarChart3, Calendar, ChevronLeft, ChevronRight 
 } from "lucide-react";
@@ -47,7 +47,7 @@ const slides = [
     content: (
       <div className="w-full max-w-3xl text-left space-y-4 font-sans">
         <div className="flex items-start gap-4">
-          <CheckDouble className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
+          <CheckCheck className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
           <p className="text-lg"><strong>Основная цель:</strong> Проектирование и economic обоснование внедрения 10 АРМ для сотрудников ККОТиП.</p>
         </div>
         <div className="flex items-start gap-4">
