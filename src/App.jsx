@@ -388,6 +388,13 @@ export default function App() {
         <button onClick={toggleFullscreen} className="p-3 ml-2 rounded-full neumorphic-btn text-slate-400 hover:text-accent cursor-pointer flex items-center justify-center">
           {isFullscreen ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
         </button>
+      
+        {isFullscreen && (
+          <div className="fixed inset-0 z-[9999] flex w-screen h-screen">
+            <div className="w-1/2 h-full" onClick={() => { if (currentSlide > 0) setCurrentSlide(currentSlide - 1); }} />
+            <div className="w-1/2 h-full" onClick={() => { if (currentSlide < slides.length - 1) setCurrentSlide(currentSlide + 1); }} />
+          </div>
+        )}
       </div>
     </div>
   );
